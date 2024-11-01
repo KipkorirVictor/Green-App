@@ -4,8 +4,22 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../componets/ui/custom_textfield.dart';
 import '../../componets/ui/social_buttons.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  RegisterScreenState createState() => RegisterScreenState();
+}
+
+class RegisterScreenState extends State<RegisterScreen> {
+  bool isChecked = false;
+
+  bool toggleCheck() {
+    setState(() {
+      isChecked = !isChecked;
+    });
+    return isChecked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +32,17 @@ class RegisterScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back_ios),
-                  onPressed: () => Navigator.pop(context),
+                Material(
+                  color: const Color(0xFFE8F5E9),
+                  shape: const CircleBorder(),
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios),
+                    onPressed: () => Navigator.pop(context),
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   children: [
-                    // CrossAxisAlignment: CrossAxisAlignment.start,
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -53,17 +70,18 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 // const SizedBox(height: 8),
                 const SizedBox(height: 32),
-                CustomTextField(
+                const CustomTextField(
                   hintText: 'Full Name',
                   prefixIcon: Icons.person_outline,
                 ),
                 const SizedBox(height: 16),
-                CustomTextField(
+                const CustomTextField(
                   hintText: 'user@mail.com',
                   prefixIcon: Icons.email_outlined,
+                  isEmail: true,
                 ),
                 const SizedBox(height: 16),
-                CustomTextField(
+                const CustomTextField(
                   hintText: 'Password',
                   prefixIcon: Icons.lock_outline,
                   isPassword: true,
@@ -75,7 +93,7 @@ class RegisterScreen extends StatelessWidget {
                     backgroundColor: const Color(0xFF2D6A4F),
                     minimumSize: const Size(double.infinity, 56),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(36),
                     ),
                   ),
                   child: Text(
@@ -86,6 +104,50 @@ class RegisterScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton(
+                        onPressed: () {
+                          toggleCheck();
+                        },
+                        child: Row(children: [
+                          Icon(
+                            isChecked
+                                ? Icons.check_circle
+                                : Icons.check_circle_outline,
+                            color: Color(0xFF2D6A4F),
+                            size: 20,
+                          ),
+                          Text(
+                            'Remember Me',
+                            style: GoogleFonts.poppins(
+                              color: Colors.grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    // const SizedBox(height: 8),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Forgot Password?',
+                          style: GoogleFonts.poppins(
+                            color: const Color(0xFF2D6A4F),
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 24),
                 Center(

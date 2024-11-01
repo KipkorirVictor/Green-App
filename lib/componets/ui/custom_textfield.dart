@@ -4,12 +4,15 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData prefixIcon;
   final bool isPassword;
+  // final IconData sufixIcon;
+  final bool isEmail;
 
   const CustomTextField({
     Key? key,
     required this.hintText,
     required this.prefixIcon,
     this.isPassword = false,
+    this.isEmail = false,
   }) : super(key: key);
 
   @override
@@ -28,11 +31,16 @@ class CustomTextField extends StatelessWidget {
             color: const Color(0xFF2D6A4F),
           ),
           suffixIcon: isPassword
-              ? Icon(
+              ? const Icon(
                   Icons.visibility_outlined,
-                  color: const Color(0xFF2D6A4F),
+                  color: Color(0xFF2D6A4F),
                 )
-              : null,
+              : isEmail
+                  ? const Icon(
+                      Icons.check,
+                      color: Color(0xFF2D6A4F),
+                    )
+                  : null,
           border: InputBorder.none,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

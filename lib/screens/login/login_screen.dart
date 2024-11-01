@@ -105,22 +105,24 @@ class LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             toggleCheck();
                           },
-                          child: Row(children: [
-                            Icon(
-                              isChecked
-                                  ? Icons.check_box
-                                  : Icons.check_box_outline_blank,
-                              color: Color(0xFF2D6A4F),
-                              size: 20,
-                            ),
-                            Text(
-                              'Remember Me',
-                              style: GoogleFonts.poppins(
-                                color: Colors.grey,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ]),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  isChecked
+                                      ? Icons.check_circle
+                                      : Icons.check_circle_outline,
+                                  color: Color(0xFF2D6A4F),
+                                  size: 20,
+                                ),
+                                Text(
+                                  'Remember Me',
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ]),
                         ),
                       ),
                       // const SizedBox(height: 8),
@@ -131,22 +133,23 @@ class LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             'Forgot Password?',
                             style: GoogleFonts.poppins(
-                              color: Colors.grey,
+                              color: const Color(0xFF2D6A4F),
                               fontSize: 12,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 80),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF2D6A4F),
                       minimumSize: const Size(double.infinity, 56),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(36),
                       ),
                     ),
                     child: Text(
